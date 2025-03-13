@@ -16,7 +16,7 @@ exports.getAllAnime = async (req, res) => {
     // Search by multiple genres (split by comma, case-insensitive)
     if (genre) {
       const genresArray = genre.split(',').map((g) => g.trim());
-      queryObject.genre = { $in: genresArray.map(g => new RegExp(g, 'i')) };
+      queryObject.genre = { $all: genresArray.map(g => new RegExp(g, 'i')) };
     }
 
     // Minimum episodes
