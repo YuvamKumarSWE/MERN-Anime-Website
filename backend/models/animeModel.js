@@ -5,9 +5,9 @@ const animeSchema = new mongoose.Schema({
   name: { type: String, required: true },
   genre: { type: String, required: true },
   type: { type: String, required: true },
-  episodes: { type: Number, required: true },
-  rating: { type: Number, required: true },
-  members: { type: Number, required: true },
+  episodes: { type: Number, required: false },
+  rating: { type: Number, required: false },
+  members: { type: Number, required: false },
 });
 
 // Specify the collection name explicitly
