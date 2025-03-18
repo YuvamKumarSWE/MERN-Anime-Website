@@ -13,6 +13,7 @@ function App() {
   const [data, setData] = useState([]); // Data fetched from the API in the backend
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [searchPerformed, setSearchPerformed] = useState(false);
 
   const handleSearch = async () => {
     setLoading(true);
@@ -28,10 +29,11 @@ function App() {
     const queryString = query.join("&");
 
     try {
-      const response = await axios.get(`http://127.0.0.1:3000/api/v1/anime?${queryString}`);
+      const response = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/anime?${queryString}`);
       
       if (response.data.status === "success") {
         setData(response.data.data.anime);
+        setSearchPerformed(true);
       } else {
         setError("Failed to fetch anime.");
       }
@@ -60,7 +62,7 @@ function App() {
           setSortBy={setSortBy}
           onSearch={handleSearch}
         />
-        <Result data={data} loading={loading} error={error} />
+        <Result data={data} loading={loading} error={error} searchPerformed={searchPerformed} />
       </div>
     </div>
   );
