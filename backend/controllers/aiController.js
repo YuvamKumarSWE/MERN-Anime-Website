@@ -35,7 +35,7 @@ exports.generateAnimeRecommendation = async (req, res) => {
     Keep the explanation under 100 words and focus on genres in our database. Don't mention any specific anime titles.`;
 
     const response = await openai.chat.completions.create({
-      model: "gpt-4o", // Changed to use the model in your example
+      model: "gpt-4o-mini", // Changed to use the model in your example
       messages: [
         { role: "system", content: systemPrompt },
         { role: "user", content: prompt }
